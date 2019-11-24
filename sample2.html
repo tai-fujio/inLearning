@@ -16,8 +16,8 @@
       </div>
       <div>
         <h3>checkbox</h3>
-        <input name = "check1" type="checkbox" checked value="Hello!!!!!">checkA
-        <input name = "check2" type="checkbox" value="Hello!!!!!">checkB
+        <input name = "check1" type="checkbox" checked>checkA
+        <input name = "check2" type="checkbox">checkB
       </div>
       <div>
         <h3>select</h3>
@@ -31,13 +31,13 @@
         <textarea name = "textArea">Write Something.</textarea>
       </div>
       <div>
-        <h3>button</h3>
-        <input name = "buttonName" type = "button" value = "ボタン">
+        <h3>radio</h3>
+        <input name = "radio" value = 1 type = "radio" >item1
+        <input name = "radio" value = 2 type = "radio" >item2
       </div>
       <div>
-        <h3>radio</h3>
-        <input name = "radio" value = 1 type = "radio" checked>item1
-        <input name = "radio" value = 2 type = "radio" >item2
+        <h3>button</h3>
+        <input name = "buttonName" type = "button" value = "ボタン">
       </div>
     </form>
     <script>
@@ -54,8 +54,24 @@
         form['select'].value = 2;
         form.textArea.value = "テストです";
       }
-      button.addEventListener('click',getValues);
-
-    </script>
-  </body>
+      //button.addEventListener('click',getValues);
+        button.addEventListener('click',getFormValues);
+        function getFormValues(){
+        var length = form.length
+        for(var i = 0; i<form.length; i++){
+        var item = form[i];
+        var name = item.name;
+        var type = item.type;
+        if (type === "radio"){
+          console.log(name,type,form[name].value);
+          break;
+        } else if (type === "checkbox"){
+          console.log(name,type,item.checked);
+        } else{
+          console.log(name,type,item.value);
+        }  
+        }
+      }
+  </script>
+</body>
 </html>
