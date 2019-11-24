@@ -44,34 +44,55 @@
       var form = document.forms.formName;
       var button = form.buttonName;
 
-      function getValues(){
+      function setValues(){
         button.value = "button!!!!!!!";
         form.text.value = "TEST";
-        
+
         form['radio'].value = 2;
-        
+
         form.check1.checked = false;
         form['select'].value = 2;
         form.textArea.value = "テストです";
       }
-      //button.addEventListener('click',getValues);
-        button.addEventListener('click',getFormValues);
-        function getFormValues(){
-        var length = form.length
-        for(var i = 0; i<form.length; i++){
-        var item = form[i];
-        var name = item.name;
-        var type = item.type;
-        if (type === "radio"){
-          console.log(name,type,form[name].value);
-          break;
-        } else if (type === "checkbox"){
-          console.log(name,type,item.checked);
-        } else{
-          console.log(name,type,item.value);
-        }  
+        button.addEventListener('click',setValues);
+        // button.addEventListener('click',getFormValues);
+        function setFormValues(values){
+          for(var set in values){
+            if (set !== 'checkbox'){
+            form[set].value = values[set];
+            }else{
+              var checkboxes = values[set];
+              console.log(checkboxes)
+              for(var checkbox in checkboxes){
+                form[checkbox].checked = checkboxes[checkbox]
+              }
+          }
+
         }
       }
+        setFormValues({
+          text:"new text", 
+          radio: 2,
+          checkbox: {check1: true, check2: true},
+          select: 2,
+          textArea: "new textArea"
+        });
+      //   function setFormValues(){
+      //   var length = form.length
+      //   for(var i = 0; i<form.length; i++){
+      //   var item = form[i];
+      //   var name = item.name;
+      //   var type = item.type;
+      //   if (type === "radio"){
+      //     console.log(name,type,form[name].value);
+      //     break;
+      //   } else if (type === "checkbox"){
+      //     console.log(name,type,item.checked);
+      //   } else{
+      //     console.log(name,type,item.value);
+      //   }
+      //   }
+      // }
   </script>
 </body>
 </html>
