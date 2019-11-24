@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <h1 id = "title2">タイトルテスト</h1>
+  <button id = "button1" type="button" data-new-title="テスト">変更</button>
+  <button id = "button2" type="button" data-new-title="別のテスト">変更</button>
+  <img id = "photo" src="/Users/fujio/Pictures/photos/0.jpg">
+  <!-- <button type="button" onclick=getRandom(1,6);>ランダム数</button> -->
+  <script>
+    // var button = document.getElementById('button');
+    // var title = document.getElementById('title');
+    // var newTitle = "これに変更";
+    button1.addEventListener('click',changeTitle);
+    button2.addEventListener('click',changeTitle);
+    function changeTitle(event){
+      button = event.target
+      title2.textContent = button.dataset.newTitle;
+      button.textContent = button.dataset.newTitle;
+    }
+    var photoElement = document.getElementById('photo');
+    var currentNum = -1
+    var files = [
+    '/Users/fujio/Pictures/photos/1.jpg',
+    '/Users/fujio/Pictures/photos/2.jpg',
+    '/Users/fujio/Pictures/photos/3.jpg',
+    '/Users/fujio/Pictures/photos/4.jpg',
+    '/Users/fujio/Pictures/photos/5.jpg',
+    ];
+    var changePhoto = function changePhoto(){
+      currentNum = ++currentNum % files.length
+      // if (currentNum >= files.length-1){
+      //   currentNum = 0;
+      // }else{
+      // ++currentNum;
+      // }
+      var photo = files[currentNum];
+      // var photo = "/Users/fujio/Pictures/photos/" + currentNum + ".jpg";
+      photoElement.setAttribute('src',photo);
+    }
+    photoElement.addEventListener('click',changePhoto);
+    // var myText = "テキスト表示"
+    // document.write(myText);
+    // // window.alert("アラート表示")
+    // // var number = Math.random();
+    // function getRandom(min,max){
+    //   var number = Math.floor(Math.random()*(max-min+1)+min);
+    //   alert(number);
+    //   return getRandom
+    // }
+      // var array = new Array();
+      var array = ['Mon.','Tue'];
+      array.push(0);
+      // array[1] = 1;
+      console.log(array);
+      console.log(array[0],array[1]);
+      console.log(array.length)
+      array.unshift('Sun.')
+      var date = new Date(2019,0,1);
+      console.log(date);
+      console.log(array[date.getDay()]);
+      console.log(date.getDay());
+  </script>
+</body>
+</html>
