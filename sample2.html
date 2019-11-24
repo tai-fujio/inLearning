@@ -17,18 +17,18 @@
       <div>
         <h3>checkbox</h3>
         <input name = "check1" type="checkbox" checked value="Hello!!!!!">checkA
-        <input name = "check2" type="checkbox" checked value="Hello!!!!!">checkB
+        <input name = "check2" type="checkbox" value="Hello!!!!!">checkB
       </div>
       <div>
         <h3>select</h3>
-          <select name="select">
+          <select name = "select">
             <option value="1">select1</option>
             <option value="2">select2</option>
           </select>
       </div>
       <div>
         <h3>textarea</h3>
-        <textarea name = "textArea" >Write Something.</textarea>
+        <textarea name = "textArea">Write Something.</textarea>
       </div>
       <div>
         <h3>button</h3>
@@ -36,8 +36,8 @@
       </div>
       <div>
         <h3>radio</h3>
-        <input name = "radio" type = "radio" checked>item1
-        <input name = "radio" type = "radio" >item2
+        <input name = "radio" value = 1 type = "radio" checked>item1
+        <input name = "radio" value = 2 type = "radio" >item2
       </div>
     </form>
     <script>
@@ -45,14 +45,14 @@
       var button = form.buttonName;
 
       function getValues(){
-        console.log(button.value);
-        console.log(form.text.value);
-        console.log(form.radio.value);
-        console.log(form['radio'].value);
-        console.log(form.check1.checked);
-        console.log(form.select.value);
-        console.log(form.textarea.value);
-
+        button.value = "button!!!!!!!";
+        form.text.value = "TEST";
+        
+        form['radio'].value = 2;
+        
+        form.check1.checked = false;
+        form['select'].value = 2;
+        form.textArea.value = "テストです";
       }
       button.addEventListener('click',getValues);
 
