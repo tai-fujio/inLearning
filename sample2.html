@@ -54,7 +54,7 @@
         form['select'].value = 2;
         form.textArea.value = "テストです";
       }
-        button.addEventListener('click',setValues);
+        button.addEventListener('click',getFormValues);
         // button.addEventListener('click',getFormValues);
         function setFormValues(values){
           for(var set in values){
@@ -67,7 +67,6 @@
                 form[checkbox].checked = checkboxes[checkbox]
               }
           }
-
         }
       }
         setFormValues({
@@ -77,22 +76,34 @@
           select: 2,
           textArea: "new textArea"
         });
-      //   function setFormValues(){
-      //   var length = form.length
-      //   for(var i = 0; i<form.length; i++){
-      //   var item = form[i];
-      //   var name = item.name;
-      //   var type = item.type;
-      //   if (type === "radio"){
-      //     console.log(name,type,form[name].value);
-      //     break;
-      //   } else if (type === "checkbox"){
-      //     console.log(name,type,item.checked);
-      //   } else{
-      //     console.log(name,type,item.value);
-      //   }
-      //   }
-      // }
+        function getFormValues(){
+        var length = form.length
+        for(var i = 0; i<form.length; i++){
+        var item = form[i];
+        var name = item.name;
+        var type = item.type;
+        switch(type){
+          case 'radio':
+            return console.log(name,type,form[name].value);
+            // break;
+          case 'checkbox':
+            console.log(name,type,item.checked);
+            break;
+          default:
+            console.log(name,type,item.value);
+            break;
+        }
+
+        // if (type === "radio"){
+        //   console.log(name,type,form[name].value);
+        //   break;
+        // } else if (type === "checkbox"){
+        //   console.log(name,type,item.checked);
+        // } else{
+        //   console.log(name,type,item.value);
+        // }
+        }
+      }
   </script>
 </body>
 </html>
